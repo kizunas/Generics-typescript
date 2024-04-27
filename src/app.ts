@@ -24,3 +24,17 @@ function merge<T extends object, U extends object>(objA: T, objB: U) { // 一つ
 // console.log(merge({name: 'Max'}, {age:30}))
 const margedObj = merge({name: 'Max'}, {age: 30})
 margedObj.age;
+
+interface Lengthy {
+  length: number
+}
+
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+  let descriptionText = '値がありません。';
+  if (element.length > 0) {
+    descriptionText = '値は' + element.length + '個です。';
+  }
+  return [element, descriptionText];
+}
+
+console.log(countAndDescribe("お疲れ様です。"));
