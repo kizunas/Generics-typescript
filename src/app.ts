@@ -16,10 +16,11 @@ const names: Array<string> = [];
 // })
 
 // 独自のGenerics型
-function merge<T extends {}, U>(objA: T, objB: U) { // 一つ目の引数をT,二つ目をUとするのが慣例的らしい。引数の値から型を動的に推論してくれる。
+// extendsでGenericsに制約を持たせられる。
+function merge<T extends object, U extends object>(objA: T, objB: U) { // 一つ目の引数をT,二つ目をUとするのが慣例的らしい。引数の値から型を動的に推論してくれる。
   return Object.assign(objA, objB);
 }
 
 // console.log(merge({name: 'Max'}, {age:30}))
-const margedObj = merge({name: 'Max'}, {age:30})
+const margedObj = merge({name: 'Max'}, {age: 30})
 margedObj.age;
