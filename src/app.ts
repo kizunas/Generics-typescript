@@ -38,3 +38,10 @@ function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
 }
 
 console.log(countAndDescribe("お疲れ様です。"));
+
+// keyofによる制約
+function extractAndConvert<T extends object, U extends keyof T>(obj: T, key: U) { // Uが存在するためにはTが必要である。
+  return 'Value:' + obj[key];
+}
+
+extractAndConvert({name: 'Max'}, 'name')
