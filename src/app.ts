@@ -2,7 +2,7 @@
 // 例：Array<string> (他の方はstring)
 // 例：Array<number> (他の方はnumber)
 // Array<string>はstring[]と同義
-const names: Array<string> = [];
+// const names: Array<string> = [];
 // names[0].split(' ');
 
 // const promise: Promise<string> = new Promise((resolve, reject) => { // promiseはnew promiseで作成できるJavaScriptのコンストラクタ関数。resolve, rejectを引数に持つ
@@ -81,3 +81,25 @@ console.log(textStorage.getItems());
 // // ...
 // objStorage.removeItem({name: 'Manu'});
 // console.log(objStorage.getItems());
+
+// generiticsのユーティリティ
+// partial
+
+interface CourseGoal {
+  title: string;
+  description: string;
+  completeUntil: Date;
+}
+
+function createCourseGoal(title: string, description: string, date: Date): CourseGoal {
+  let courseGoal: Partial<CourseGoal> = {}; // Partial: 最終的な型はCourseGoalになるがそれまでは任意のオプショナルのプロパティとする
+  courseGoal.title = title;
+  courseGoal.description = description;
+  courseGoal.completeUntil = date;
+  // return courseGoal; // Partial型なのでそのままreturnできない
+  return courseGoal as CourseGoal
+}
+
+// readonly
+const names: Readonly<string[]> = ['Max', 'Anna'];
+// names.push('Manu')
